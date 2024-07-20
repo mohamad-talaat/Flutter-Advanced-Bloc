@@ -17,17 +17,20 @@ class LoginCubit extends Cubit<LoginState> {
 
   GlobalKey<FormState> formstate = GlobalKey<FormState>();
 //////////////////////////////simple way /////////////////////////////////
-  void login(email, pass) {
-    if (formstate.currentState!.validate()) {
-      emit(LoginLoading(StatusRequest.loading));
+///// if you create thisin state: dart run build_runner build --delete-conflicting-outputs
+  /// >> you will do this in cubit :: response.when(success:(loginResponsive){emit..} , failure:(...){emit...}) //وبس كدا
 
-      var response = loginRepo.postData(email, pass);
-      response.fold(
-        (l) => emit(LoginFailure(l)),
-        (r) => emit(LoginSuccess(r)),
-      );
-    }
-  }
+  // void login(email, pass) {
+  //   if (formstate.currentState!.validate()) {
+  //     emit(LoginLoading(StatusRequest.loading));
+
+  //     var response = loginRepo.postData(email, pass);
+  //     response.fold(
+  //       (l) => emit(LoginFailure(l)),
+  //       (r) => emit(LoginSuccess(r)),
+  //     );
+  //   }
+  // }
 
   ///////////////////////////// by catching all error /////////////////////////////
   // void login(String email, String password) async { // from wael getx to omar bloc
