@@ -1,19 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_advanced_omar_ahmed/core/routing/router.dart';
-import 'package:flutter_advanced_omar_ahmed/core/routing/routes.dart';
+import 'package:flutter_advanced_omar_ahmed/core/routing/app_router.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+ import 'core/routing/routes.dart';
+
 class DocApp extends StatelessWidget {
-  const DocApp({super.key});
+final  AppRouter appRouter;  const DocApp({super.key, required this.appRouter});
 
   @override
   Widget build(BuildContext context) {
+   
     return ScreenUtilInit(
-      designSize: const Size(360, 690),
+      designSize: Size(360, 690),
       minTextAdapt: true,
       splitScreenMode: true,
       builder: (_, child) {
-        return const MaterialApp(
+        return MaterialApp(
           debugShowCheckedModeBanner: false,
           title: "Doc App",
           //  theme: ThemeData(
@@ -21,8 +23,8 @@ class DocApp extends StatelessWidget {
           //   textTheme: Typography.englishLike2018.apply(fontSizeFactor: 1.sp),
           // ),
 
-          initialRoute: AppRoutes.onboarding,
-          onGenerateRoute: AppRouter.generateRoute,
+          initialRoute: Routes.onBoardingScreen,
+          onGenerateRoute: appRouter.generateRoute,
         );
       },
     );
