@@ -18,6 +18,8 @@ class LoginRepo {
   // LoginRepo(this.crud);
   final Crud crud = Crud();
 
+  LoginRepo(Object object);
+
   postData(String email, String password) async {
  // postData(LoginModel loginModel) async {
     //try , catch error
